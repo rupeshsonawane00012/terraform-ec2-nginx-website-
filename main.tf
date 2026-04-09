@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "myec2" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  key_name      = var.key_name
+  key_name      = var.new
 
   user_data = file("scripts/user_data.sh")
 
