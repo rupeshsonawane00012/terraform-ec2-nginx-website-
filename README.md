@@ -33,6 +33,92 @@ The goal was to understand how Infrastructure as Code (IaC) works in real life.
 7. Opened the IP in browser → saw Nginx running
 8. Connected to EC2 and replaced default page with my own HTML
 
+## ⚙️ Terraform Installation (Linux - Ubuntu)
+
+To install Terraform, I followed these steps:
+
+```bash
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+```
+
+```bash
+sudo apt update && sudo apt install terraform
+```
+
+---
+
+## 🔄 Terraform Resource Symbols (Understanding Plan Output)
+
+While running `terraform plan`, I learned these symbols:
+
+* `+` → Resource will be **created**
+* `-` → Resource will be **deleted**
+* `~` → Resource will be **modified/changed**
+
+---
+
+## 🚀 Terraform Commands I Used
+
+Here are the main Terraform commands I used in this project:
+
+```bash
+terraform init
+```
+
+👉 Initializes Terraform in the current directory (downloads providers)
+
+```bash
+terraform plan
+```
+
+👉 Shows what resources will be created (like a blueprint)
+
+```bash
+terraform validate
+```
+
+👉 Checks if the Terraform code is correct
+
+```bash
+terraform fmt
+```
+
+👉 Formats the Terraform files properly
+
+```bash
+terraform apply
+```
+
+👉 Creates the infrastructure (asks for approval)
+
+```bash
+terraform apply -auto-approve
+```
+
+👉 Creates infrastructure without asking for approval
+
+```bash
+terraform destroy -auto-approve
+```
+
+👉 Deletes all created resources automatically
+
+---
+
+## 💡 Simple Understanding
+
+* `init` → Setup
+* `plan` → Preview
+* `apply` → Create
+* `destroy` → Delete
+
+---
+
+
 ---
 
 ##  Result
